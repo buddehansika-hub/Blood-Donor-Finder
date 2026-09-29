@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Received Requests</title>
+</head>
+
+<body>
+
+<h2>Received Blood Requests</h2>
+
+<table border="1">
+
+<tr>
+
+<th>Patient</th>
+
+<th>Hospital</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+{% for request in requests %}
+
+<tr>
+
+<td>{{ request.patient_name }}</td>
+
+<td>{{ request.hospital }}</td>
+
+<td>{{ request.status }}</td>
+
+<td>
+
+<a href="{% url 'update_request' request.id 'Accepted' %}">
+<button>Accept</button>
+</a>
+
+<a href="{% url 'update_request' request.id 'Rejected' %}">
+<button>Reject</button>
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>  
+
+{% endblock %}

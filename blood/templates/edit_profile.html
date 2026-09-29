@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Donor Profile</h2>
+
+        <!-- Display messages if any -->
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" value="{{ donor.phone }}">
+            </div>
+
+            <div>
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" value="{{ donor.age }}">
+            </div>
+
+            <div>
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="Male" {% if donor.gender == "Male" %}selected{% endif %}>Male</option>
+                    <option value="Female" {% if donor.gender == "Female" %}selected{% endif %}>Female</option>
+                    <option value="Other" {% if donor.gender == "Other" %}selected{% endif %}>Other</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="blood_group">Blood Group:</label>
+                <input type="text" id="blood_group" name="blood_group" value="{{ donor.blood_group }}">
+            </div>
+
+            <div>
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" value="{{ donor.city }}">
+            </div>
+
+            <div>
+                <label for="address">Address:</label>
+                <textarea id="address" name="address">{{ donor.address }}</textarea>
+            </div>
+
+            <div>
+                <label>
+                    <input type="checkbox" name="available" {% if donor.available %}checked{% endif %}>
+                    Available for Donation
+                </label>
+            </div>
+
+            <button type="submit">Update Profile</button>
+        </form>
+
+        <p><a href="{% url 'dashboard' %}">Back to Dashboard</a></p>
+    </div>
+</body>
+</html>
+
+

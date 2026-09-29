@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="text-center">
+
+<h1 class="display-4 text-danger">
+
+Blood Donor Finder
+
+</h1>
+
+<p class="lead">
+
+Connecting Blood Donors with Patients Quickly
+
+</p>
+
+<a href="{% url 'register' %}" class="btn btn-danger btn-lg">
+
+Become a Donor
+
+</a>
+
+<a href="{% url 'login' %}" class="btn btn-outline-danger btn-lg">
+
+Login
+
+</a>
+
+</div>
+
+<hr>
+
+<div class="row mt-5">
+
+<div class="col-md-4">
+
+<div class="card">
+
+<div class="card-body">
+
+<h3>Search Donors</h3>
+
+<p>Find donors by blood group and city.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card">
+
+<div class="card-body">
+
+<h3>Emergency Requests</h3>
+
+<p>Send blood requests instantly.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card">
+
+<div class="card-body">
+
+<h3>Verified Donors</h3>
+
+<p>Connect with registered donors.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

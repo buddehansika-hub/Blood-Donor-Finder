@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blood Request</title>
+</head>
+<body>
+
+<h2>Blood Request Form</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<label>Patient Name</label><br>
+<input type="text" name="patient_name" required><br><br>
+
+<label>Hospital</label><br>
+<input type="text" name="hospital" required><br><br>
+
+<label>City</label><br>
+<input type="text" name="city" required><br><br>
+
+<label>Contact Number</label><br>
+<input type="text" name="contact" required><br><br>
+
+<button type="submit">
+Send Request
+</button>
+
+</form>
+
+</body>
+</html>
+
+{% endblock %}

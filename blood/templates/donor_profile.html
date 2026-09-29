@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Donor Profile</title>
+</head>
+
+<body>
+
+<h2>Create Donor Profile</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<label>Phone Number</label><br>
+<input type="text" name="phone" required><br><br>
+
+<label>Age</label><br>
+<input type="number" name="age" required><br><br>
+
+<label>Gender</label><br>
+
+<select name="gender">
+
+<option>Male</option>
+
+<option>Female</option>
+
+<option>Other</option>
+
+</select>
+
+<br><br>
+
+<label>Blood Group</label><br>
+
+<select name="blood_group">
+
+<option>A+</option>
+<option>A-</option>
+
+<option>B+</option>
+<option>B-</option>
+
+<option>AB+</option>
+<option>AB-</option>
+
+<option>O+</option>
+<option>O-</option>
+
+</select>
+
+<br><br>
+
+<label>City</label><br>
+
+<input type="text" name="city" required>
+
+<br><br>
+
+<label>Address</label><br>
+
+<textarea name="address"></textarea>
+
+<br><br>
+
+<button type="submit">
+
+Save Profile
+
+</button>
+
+</form>
+
+</body>
+
+</html>
+

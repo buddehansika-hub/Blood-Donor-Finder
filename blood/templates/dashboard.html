@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Welcome {{ user.username }}</h2>
+
+<div class="dashboard-grid mt-4">
+
+    <div class="dashboard-card-col">
+
+        <div class="card dashboard-card text-center">
+
+            <div class="card-body">
+
+                <h5>Become Donor</h5>
+
+                <a href="{% url 'donor_profile' %}" class="btn btn-danger">
+
+                    Open
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="dashboard-card-col">
+
+        <div class="card dashboard-card text-center">
+
+            <div class="card-body">
+
+                <h5>Search Donor</h5>
+
+                <a href="{% url 'search' %}" class="btn btn-primary">
+
+                    Search
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="dashboard-card-col">
+
+        <div class="card dashboard-card text-center">
+
+            <div class="card-body">
+
+                <h5>My Requests</h5>
+
+                <a href="{% url 'my_requests' %}" class="btn btn-success">
+
+                    Open
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="dashboard-card-col">
+
+        <div class="card dashboard-card text-center">
+        </div>
+    </div>
+
+    <div class="dashboard-card-col">
+
+        <div class="card dashboard-card text-center">
+
+            <div class="card-body">
+
+                <h5>Edit Profile</h5>
+
+                <a href="{% url 'edit_profile' %}" class="btn btn-info">
+                    Edit Profile
+                </a>
+
+            </div>   
+
+    </div>
+
+    {% endblock %}

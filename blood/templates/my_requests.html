@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Requests</title>
+</head>
+
+<body>
+
+    <h2>My Blood Requests</h2>
+
+    <table border="1">
+
+        <tr>
+
+            <th>Patient</th>
+
+            <th>Donor</th>
+
+            <th>Status</th>
+
+        </tr>
+
+        {% for request in requests %}
+
+        <tr>
+
+            <td>{{ request.patient_name }}</td>
+
+            <td>{{ request.donor.user.username }}</td>
+
+            <td>{{ request.status }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</body>
+
+</html>
+
+  @login_required
+def my_requests(request):
+
+    requests = BloodRequest.objects.filter(
+        requester=request.user
+    )
+
+    return render(
+        request,
+        "my_requests.html",
+        {"requests": requests}
+    )
+
+    {% endblock %}

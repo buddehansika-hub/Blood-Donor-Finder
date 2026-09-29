@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Search Donor</title>
+
+</head>
+
+<body>
+
+    <h2>Search Blood Donor</h2>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <label>Blood Group</label>
+
+        <br>
+
+        <select name="blood_group">
+
+            <option>A+</option>
+            <option>A-</option>
+            <option>B+</option>
+            <option>B-</option>
+            <option>AB+</option>
+            <option>AB-</option>
+            <option>O+</option>
+            <option>O-</option>
+
+        </select>
+
+        <br><br>
+
+        <label>City</label>
+
+        <br>
+
+        <input type="text" name="city" required>
+
+        <br><br>
+
+        <button type="submit">
+
+            Search
+
+        </button>
+
+    </form>
+
+    <hr>
+
+    {% if donors %}
+
+    <table border="1" cellpadding="10">
+
+        <tr>
+
+            <th>Name</th>
+
+            <th>Phone</th>
+
+            <th>Blood Group</th>
+
+            <th>City</th>
+
+            <th>Availability</th>
+            
+            <th>Action</th>
+
+        </tr>
+
+        {% for donor in donors %}
+
+        <td>{{ donor.user.get_full_name|default:donor.user.username }}</td>
+<td>{{ donor.phone }}</td>
+<td>{{ donor.city }}</td>
+<td>{{ donor.blood_group }}</td>
+
+        <tr>
+
+            <td>{{ donor.user.username }}</td>
+
+            <td>{{ donor.phone }}</td>
+
+            <td>{{ donor.blood_group }}</td>
+
+            <td>{{ donor.city }}</td>
+
+            <td>
+    <a href="{% url 'send_request' donor.id %}">
+        <button>Request Blood</button>
+    </a>
+</td>
+
+            <td>
+
+                {% if donor.available %}
+
+                Available
+
+                {% else %}
+
+                Not Available
+
+                {% endif %}
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% endif %}
+
+</body>
+
+</html>
+
+{% endblock %}
